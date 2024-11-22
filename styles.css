@@ -1,0 +1,562 @@
+/* �뼨轅명�∽옙沅� �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+body {
+    background-color: #121212;
+    color: #f8f8f8;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* �뜝�럥�뿕�뜝�럥�맠 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+header {
+    background-color: #1f1f1f;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    color: #ffcc00;
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* �뜝�럡�맟占쎈쑏熬곥룂�벟�뜝�럩逾졾뜝�럥占쏙옙 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f8f8f8;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* 嶺뚮∥�뾼占쎈데 占쏙옙�슓維귨옙占쎌���럹�뜝占� �뜝�럩寃ュ뜝�럥�뿴 */
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+}
+
+main > section {
+    flex: 3;
+}
+
+/* aside �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+main > aside {
+    flex: 1;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside nav ul li {
+    margin-bottom: 10px;
+}
+
+aside nav ul li:last-child {
+    margin-bottom: 0;
+}
+
+aside nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #2a2a2a;
+    color: #f8f8f8;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+aside nav ul li a:hover {
+    background-color: #ffcc00;
+    color: #121212;
+    transform: translateX(5px);
+}
+
+/* �뛾�룇瑗뤄옙踰볟뜝�럩援� �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� �뜝�럥�빢�뜝�럩�젧 */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    main > aside {
+        margin-top: 20px;
+    }
+
+    aside nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    aside nav ul li {
+        flex: 1 1 calc(50% - 5px);
+        margin-bottom: 0;
+    }
+
+    aside nav ul li a {
+        text-align: center;
+    }
+}
+
+/* �뜝�럡�돭�뜝�럥占쏙옙 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+section {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #ffcc00;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffcc00;
+}
+
+/* �뵓怨뚯뫓占쎈괏 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ffcc00;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e6b800;
+}
+
+.button.small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.button.large {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+}
+
+.button.delete {
+    background-color: #ff4444;
+    color: white;
+}
+
+.button.secondary {
+    background-color: #666;
+    color: white;
+}
+
+/* �뜝�럥夷� �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f8f8f8;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #f8f8f8;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+/* 嶺뚳퐢�샑野껊틺爾몌쭚�끇裕� 占쏙옙�슓維귨옙占쎈���삕占쎈턄�뜝�럡�꼸 */
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #2a2a2a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* 占쎈뎨占쎈맧�쑏 �뇖�궠占쏙옙獄�占� �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+.review-card {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+.review-header {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.review-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+.review-title {
+    color: #ccc;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+
+.review-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rating {
+    font-weight: bold;
+    color: #f90;
+    white-space: nowrap;
+}
+
+.author-info {
+    color: #ccc;
+    font-size: 0.9em;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.author-info .author,
+.author-info .date {
+    white-space: nowrap;
+}
+
+.review-preview {
+    color: #eee;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.review-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.review-actions .button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.review-actions .button:hover {
+    background: #444;
+}
+
+.review-actions .button.delete {
+    background: #662222;
+    border-color: #773333;
+}
+
+.review-actions .button.delete:hover {
+    background: #883333;
+}
+
+/* 占쎈뎨占쎈맧�쑏 嶺뚮ㅄ維뽨빳占� �윜諛몄굡占쎈뉴�뜝�럥援� */
+.review-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* �뜝�럥爾녑뜝�럡�댉 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+footer {
+    background-color: #1f1f1f;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: #ffcc00;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ffcc00;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* �슖�돦裕꾬옙�쟽�뜝�럩逾� �뜝�럡留믣뜝�럡臾� �뜝�럥�걫�뜝�럥六� */
+.user-info {
+    text-align: right;
+    padding: 10px 20px;
+}
+
+.user-info .username {
+    color: #ffcc00;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* �뛾�룇瑗뤄옙踰볟뜝�럩援� �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .review-list {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .button {
+        padding: 10px 18px;
+    }
+}
+
+/* �뇦猿딆뒩占쎈엮 嶺뚮ㅄ維뽨빳占� �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+.game-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 0 auto 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.game-title {
+    color: #f8f8f8;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.critic-score {
+    font-size: 1.4em;
+    color: #2196f3;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.genre, .difficulty, .tags {
+    margin: 12px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    color: #f8f8f8;
+    font-size: 1.1em;
+}
+
+.label {
+    font-weight: bold;
+    color: #ffcc00;
+    font-size: 1.1em;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #121212;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    margin-top: 15px;
+}
+
+.game-info {
+    flex: 1;
+}
+
+.game-image img {
+    width: 180px;
+    height: 240px;
+}
+
+/* �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕�뜝�럡�맟�뜝�럩逾졾뜝�럥占쏙옙 �뜝�럥裕욃뜝�룞�삕�뜝�룞�삕占쎈뎄 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#page-info {
+    font-size: 0.9rem;
+    color: #f8f8f8;
+}
+
+/* 嶺뚳퐢�샑野껊틺爾몌쭚�끇裕� 占쏙옙�슓維귨옙占쎈���삕占쎈턄�뜝�럡�꼸 �뤆�룇裕뉓땻占� */
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.checkbox-container label {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0;
+}
+
+/* 占쎈퉲�겫�슦�뱷 �뇦猿됲�쀯옙沅� �뵓怨뚯뫓占쎈괏 占쏙옙�슓維귨옙占쎈���삕占쎈턄�뜝�럡�꼸 */
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* �뛾�룇瑗뤄옙踰볟뜝�럩援� �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� */
+@media (max-width: 768px) {
+    .game-item {
+        flex-direction: column;
+    }
+    
+    .game-image {
+        flex: 0 0 auto;
+    }
+    
+    .checkbox-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.review-image img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.user-info {
+    text-align: right;
+}

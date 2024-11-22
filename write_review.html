@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 리코 - 리뷰 작성</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="common.js"></script>
+</head>
+<body class="write-review-page">
+    <div id="header-placeholder"></div>
+    <main>
+        <section id="write-review">
+            <h2>리뷰 작성</h2>
+            <form id="review-form" action="save_review.php" method="POST">
+                <div class="form-group">
+                    <label for="game-select">게임 선택:</label>
+                    <select id="game-select" name="game_title" required>
+                        <option value="">게임을 선택하세요</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review-title">리뷰 제목:</label>
+                    <input type="text" id="review-title" name="title" required placeholder="리뷰 제목을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="rating">평점:</label>
+                    <select id="rating" name="rating" required>
+                        <option value="5">5 - 최고</option>
+                        <option value="4">4 - 좋음</option>
+                        <option value="3">3 - 보통</option>
+                        <option value="2">2 - 나쁨</option>
+                        <option value="1">1 - 매우 나쁨</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review-content">리뷰 내용:</label>
+                    <textarea id="review-content" name="content" rows="10" required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="button">리뷰 등록</button>
+                    <a href="reviews.html" class="button secondary">취소</a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script>
+        // games.json에서 게임 목록 불러오기
+        fetch('games.json')
+            .then(response => response.json())
+            .then(games => {
+                const select = document.getElementById('game-select');
+                games.forEach(game => {
+                    const option = document.createElement('option');
+                    option.value = game.게임명;
+                    option.textContent = game.게임명;
+                    select.appendChild(option);
+                });
+            });
+    </script>
+</body>
+</html>

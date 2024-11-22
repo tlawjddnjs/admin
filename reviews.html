@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 리코 - 게임 리뷰</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="common.js"></script>
+</head>
+<body class="reviews-page">
+    <div id="header-placeholder"></div>
+    <main>
+        <section id="reviews">
+            <h2>게임 리뷰</h2>
+            <div class="review-list" id="review-list">
+                <!-- PHP에서 가져온 리뷰들이 여기에 표시됩니다 -->
+            </div>
+            <div class="review-controls">
+                <a href="write_review.html" class="button small">리뷰 작성하기</a>
+            </div>
+        </section>
+    </main>
+    <script>
+        let gamesData = {};
+
+        // 먼저 games.json 데이터를 불러옵니다
+        fetch('games.json')
+            .then(response => response.json())
+            .then(games => {
+                // 게임 데이터를 객체로 변환하여 저장
+                games.forEach(game => {
+                    gamesData[game.게임명] = game;
+                });
+                
+                // 그 다음 리뷰 데이터를 불러옵니다
+                return fetch('get_reviews.php');
+            })
+            .then(response => response.json())
+            .then(reviews => {
+                const reviewList = document.getElementById('review-list');
+                reviews.forEach(review => {
+                    const gameInfo = gamesData[review.game_title] || {};
+                    reviewList.innerHTML += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <h3>${review.title}</h3>
+                                <div class="review-title">${review.game_title}</div>
+                            </div>
+                            <div class="review-content">
+                                <div class="review-image">
+                                    <img src="${gameInfo.이미지 || 'images/default-game.jpg'}" 
+                                         alt="${review.game_title} 이미지"
+                                         width="150"
+                                         height="200">
+                                </div>
+                                <div class="review-details">
+                                    <div class="review-meta">
+                                        <span class="rating">평점: ${review.rating}/5</span>
+                                    </div>
+                                    <p class="review-preview">${review.content.substring(0, 100)}...</p>
+                                </div>
+                            </div>
+                            <div class="author-info small-text">
+                                <span class="author">작성자: ${review.author}</span>
+                                <span class="date">${review.created_at}</span>
+                            </div>
+                            <div class="review-actions">
+                                <a href="review_detail.html?id=${review.id}" class="button">자세히 보기</a>
+                                ${review.author === sessionStorage.getItem('username') ? 
+                                    `<button onclick="deleteReview(${review.id})" class="button delete">삭제</button>` : ''
+                                }
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+
+        function deleteReview(reviewId) {
+            if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
+                const formData = new FormData();
+                formData.append('review_id', reviewId);
+
+                fetch('delete_review.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => {
+                    alert(result);
+                    location.reload();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>
